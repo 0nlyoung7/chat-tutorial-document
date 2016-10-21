@@ -1,4 +1,4 @@
 # Summary
 
-* 준비하기
+* [준비하기](prepare.md)
 
