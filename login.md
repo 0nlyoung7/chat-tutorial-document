@@ -6,7 +6,7 @@
 
 먼저 상단 헤더영역과 기본 화면을 생성하겠습니다.
 
-```
+```html
 <ion-header>
 	<ion-navbar>
 		<ion-title>Sign In</ion-title>
@@ -18,7 +18,7 @@
 
 singin.html 과 매핑될 signin.ts을 생성하겠습니다.
 
-```
+```js
 import { Component } from '@angular/core';
 
 @Component({
@@ -36,7 +36,7 @@ export class SignInPage {
 
 singin.ts 파일에 id, password 를 입력받기 위한 변수와 로그인 버튼 이벤트를 위한 메소드를 생성하겠습니다.
 
-```
+```js
 userId: string;
 password: string;
 
@@ -50,7 +50,7 @@ public signIn(){
 이제 signin.html 파일에 입력창과 로그인 버튼을 추가하겠습니다.
 ionic v2에서 제공하는 [Input](http://ionicframework.com/docs/v2/components/#stacked-labels)컴포넌트를 이용하여 로그인을 위한 입력창과 버튼을 생성하겠습니다.
 	
-```
+```html
 <ion-content padding>
 	<ion-list>
 		<ion-item>
@@ -85,7 +85,7 @@ XPush 객체를 모든 컴포넌트에서 사용할 수 있도록 하기 위한 
 sharedService.js 를 아래와 같이 작성하겠습니다.
 
 
-```
+```js
 import { Injectable } from '@angular/core';
 declare var XPush: any;
 
@@ -107,7 +107,7 @@ export class SharedService {
 sharedService 를 providers에 추가합니다.
 이렇게 추가된 sharedService는 아래와 같은 방식으로 모든 컴포넌트에서 사용이 가능합니다.
 
-```
+```js
 	constructor(public navCtrl: NavController, public ss: SharedService) {
 		ss.xpush;		
 	}
@@ -117,7 +117,7 @@ sharedService 를 providers에 추가합니다.
 
 이제 xpush 객체를 이용해서 signIn 함수를 아래와 같이 수정하겠습니다.
 
-```
+```js
 	public signIn(){
 		var self = this;
 		this.ss.xpush.login(this.userId, this.password, function(err, result){
@@ -129,6 +129,6 @@ sharedService 를 providers에 추가합니다.
 입력창에 userId 와 password를 입력하고 Login 버튼을 클릭하면, 정상적으로 Login이 되는 것을 확인하실 수 있습니다.
 로그인이 완료되면, 기존의 메인 Page 였던 TabPage로 이동하도록 signIn() 수정하겠습니다.
 
-```
+```js
 	self.navCtrl.push(TabsPage, {});
 ```
