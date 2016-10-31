@@ -17,9 +17,11 @@ ionic은 nodejs 기반으로 개발환경을 제공하고 있습니다. Nodejs�
 ## Ionic 설치하기
 
 마지막으로 화면을 개발하기 위해 사용하는 ionic을 설치하겠습니다.
-ionic에서는 cordova를 사용하기 때문에 cordova 설치에 필요한 Android SDK나 XCODE가 필요할 수 있습니다.
+사용하는 환경에 따라 2분~5분 정도가 소요될 수 있습니다.
+cordova 사용을 위해서 필요한 Android SDK나 XCODE가 필요할 수 있습니다.
 
+``` bash
 	sudo npm install -g cordova ionic
+```
 
-
-이렇게 하면 우리는 ionic 개발을 위한 모든 준비가 완료된 상태입니다.
+이렇게 하면 ionic 개발을 위한 모든 준비가 완료된 상태입니다.

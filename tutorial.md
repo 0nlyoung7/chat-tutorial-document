@@ -5,7 +5,7 @@ Prepare 세션에서 설치한 ionic의 [tab template](https://github.com/drifty
 	
 	$ionic start chat-tutorial tabs --v2
 
-생성된 chat-tutorial 프로젝트를 아래와 같은 명령어를 사용해서 실행할 수 있습니다. `ionic serve`
+생성된 chat-tutorial 프로젝트를 아래와 같은 명령어를 사용해서 web application의 형태로 실행할 수 있습니다. `ionic serve`
 
 	$ionic serve
 
