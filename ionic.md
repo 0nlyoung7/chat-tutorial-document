@@ -10,10 +10,7 @@ Ionic 을 사용하여 하이브리드 앱을 개발할 경우 아래와 같은 
 
 ## Ionic 이해하기
 
-Ionic은 디음과 같은 3가지 사전지식이 필요합니다.
+Ionic을 활용하기 위해서는 디음과 같은 3가지 사전지식이 필요합니다.
 - AngularJs
 - Node.js
 - PhoneGap( Cordova )
-
-
-## Ionic과 Ionic V2의 차이에 대한 설명 

@@ -1,7 +1,7 @@
 # Ionic 프로젝트 시작하기
 
 Ionic 은 nodejs 기반의 cli 를 제공하고 있습니다.
-Prepare 세션에서 설치한 ionic의 [tab template](https://github.com/driftyco/ionic2-starter-tabs)을 사용하여 chat-tutorial 프로젝트를 생성하겠습니다. `ionic start chat-tutorial tabs --v2`
+Prepare 세션에서 설치한 ionic의 [tab template](https://github.com/driftyco/ionic2-starter-tabs)을 사용하여 sample Project 프로젝트를 생성하겠습니다. `ionic start chat-tutorial tabs --v2`
 	
 	$ionic start chat-tutorial tabs --v2
 

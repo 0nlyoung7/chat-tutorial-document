@@ -4,10 +4,10 @@
 
 1. [준비하기](prepare.md)
 
-2. [시작하기](tutorial.md)
+2. [시작하기](start.md)
 
 3. [로그인화면 만들기](login.md)
 
 4. [사옹자 목록화면 만들기](contact.md)
 
-5. [채팅 화면 만들기](login.md)
+5. [채팅 화면 만들기](chat.md)

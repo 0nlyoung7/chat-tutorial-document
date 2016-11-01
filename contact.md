@@ -15,14 +15,12 @@
 				<img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-woody.png">
 			</ion-avatar>
 			<h2>Woody</h2>
-			<p>This town ain't big enough for the two of us!</p>
 		</ion-item>
 		<ion-item>
 			<ion-avatar item-left>
 				<img src="http://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
 			</ion-avatar>
 			<h2>Buzz Lightyear</h2>
-			<p>My eyeballs could have been sucked from their sockets!</p>
 		</ion-item>
 	</ion-list>
 ```
@@ -56,13 +54,43 @@ users 라는 array 객체를 만들어 Dom 객체에 Binging 하도록 수정해
 	 	<img src="{{user.I}}">
 	</ion-avatar>
 	<h2>{{user.U}}</h2>
-	<p>{{user.MG}}</p>
 </ion-item>
 ```
 
 중복되는 부분을 아래와 같이 수정하겠습니다.
 
-여기서는 list를 구현하기 위해 angular2의 [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)를 사용했습니다. [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)는 javascript의 for 문과 비슷한 형태로 동작하며, array 형태의 변수에서 object를 꺼내와서 바인딩을 하도록 되어 있습니다.
+여기서는 list를 구현하기 위해 angular2의 [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)를 사용했습니다. [ngFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html)는 javascript의 for 문과 비슷한 형태로 동작하며, array 형태의 변수에서 object를 꺼내와서 바인딩하도록 되어 있습니다.
 
-## 3) xpush 의 user list 조회하기
+## 3) xpush의 user list 조회하기
 
+현재 접속 중인 사용자 List를 조회할수 있는 함수인 listActiveUser를 호출해서 사용자 list를 만들어보겠습니다.
+
+
+```js
+	ss.xpush.listActiveUser( function( err, res, count){
+
+		if( res.status == "ok"){
+			self.users = res.result;
+		} else {
+
+		}
+	});
+```
+
+## 4) 채팅화면 입장하기
+이제 `ion-item`을 클릭하면 채팅 화면으로 넘어갈 수 있도록 onclick 이벤트를 추가해보겠습니다.
+```html
+<ion-item *ngFor="let user of users;" (click)="gotoChat(user);">
+...
+</ion-item>
+```
+
+```js
+	public gotoChat = (user) => {
+		this.navCtrl.rootNav.push(ChatPage, {users:[user.U]});
+	}
+```
+
+여기서는 ionic 에서 제공하는 [NavController](https://ionicframework.com/docs/v2/api/navigation/NavController/)를 사용해서 ChatPage 로 이동하도록 구현했습니다.
+
+이제 채팅 화면을 만들어보겠습니다. 
