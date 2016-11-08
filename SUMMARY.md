@@ -1,13 +1,10 @@
 # Summary
 
-이번 Tutorial 세션에서는 Ionic2와 XPush의 Javascript library를 이용하여 쉽고 빠르게 채팅 앱을 만드는 과정을 실습해보고자 합니다. 본 Tutorial의 순서는 아래와 같이 진행됩니다.
-
-1. [준비하기](prepare.md)
-
-2. [시작하기](start.md)
-
-3. [로그인화면 만들기](login.md)
-
-4. [사옹자 목록화면 만들기](contact.md)
-
-5. [채팅 화면 만들기](chat.md)
+* [Introduction](README.md)
+* [1. 준비하기](prepare.md)
+* [2. 시작하기](start.md)
+* [3. 회원가입 화면 만들기](signup.md)
+* [4. 로그인화면 만들기](signin.md)
+* [5. 사용자 검색 화면 만들기](searchUsers.md)
+* [6. 친구 목록화면 만들기](follows.md)
+* [7. 채팅 화면 만들기](chat.md)

@@ -1,30 +1,39 @@
 # 채팅 화면 만들기
 
-이제 채팅 화면을 만들어보겠습니다.
+## 화면 구성하기
+-----------
 
-## 1) 화면 구성하기
+pages/chats 폴더 아래에 chat.ts 파일을 생성하겠습니다.
 
-pages/chat 폴더 아래에 chat.ts 파일을 생성하겠습니다.
+```javascript
+import { Component, ElementRef, ViewChild, Renderer } from '@angular/core';
 
+import { NavController, NavParams, Content } from 'ionic-angular';
 
-```js
-export class ChatPage {
+import {SharedService} from '../../app/sharedService';
 
-  channelId: string; //생성할 channelId
-  inputMessage: string; //입력 받을 메시지
-  messages:any[] = []; //message의 array
+@Component({
+  selector: 'page-chat',
+  templateUrl: 'chat.html'
+})
+
+  inputMessage: any;
+  messages:any[] = [];
+  channel:any;
+
+  @ViewChild(Content) content: Content;
 
   constructor(private renderer: Renderer, public navCtrl: NavController, public ss: SharedService, private navParams: NavParams) {
 
-    let users = navParams.get('users');    
+    let users = navParams.get('users');
+    let channelId = navParams.get('channelId');   
     var self = this;
-
-    self.channelId = ss.xpush.generateChannelId( users );
   }
 
   public send = () => {
-    this.messages.push( {"content": this.inputMessage, "sr":"S" } );
-    this.inputMessage = "";
+    var msg = this.inputMessage;
+    console.log( msg );
+    this.inputMessage = '';
   }
 }
 ```
@@ -42,9 +51,18 @@ export class ChatPage {
 
 <ion-content padding>
   <ol class="messages">
-    <li *ngFor="let message of messages;" [ngClass]="message.sr">
-        <span>{{message.content}}</span>
-	  </li>
+    <li *ngFor="let message of messages;" [ngClass]=" message.sent ? 'S':'R' ">
+      <img *ngIf="!message.sent" [src]="message.user.avatar" class="avatar"/>
+      <div *ngIf=" message.image ">
+        <span>
+          <img [src]="message.image"/>
+        </span>
+      </div>
+      <div *ngIf=" message.text ">
+        <span>{{message.text}}</span>
+      </div>
+      <span class="time">{{message.createdAt| date:"hh:mm:ss" }}</span>
+    </li>
   </ol>
 </ion-content>
 
@@ -53,32 +71,57 @@ export class ChatPage {
     <ion-input [(ngModel)]="inputMessage" placeholder="Start typing..."></ion-input>
     <button ion-button item-right color="primary" style="min-width:50px;" (click)="send()" >Send</button>
   </ion-item>
-</ion-footer>
+</ion-footer> 
 ```
 
-## 2) XPush를 이용하여 전송하기
+## S5Platform의 친구목록 조회하기
+-----------
 
-이제 SharedService 로 등록된 xpush 객체를 이용하여 입력된 메세지를 실제로 전송해보겠습니다.
+이제 SharedService 로 등록된 `stalk` 객체를 이용하여 입력된 메세지를 실제로 전송해보겠습니다.
 
 먼저 constructor 함수를 아래와 같이 수정하겠습니다.
 
+```javascript
+  constructor(private renderer: Renderer, public navCtrl: NavController, public ss: SharedService, private navParams: NavParams) {
 
-```js
-this.ss.xpush.on( 'message', function(channel, name, data){
+    let users = navParams.get('users');
+    let channelId = navParams.get('channelId');
 
-  var msg = decodeURIComponent( data.MG );
-  var type = data.TP ? data.TP : '';
-  self.messages.push( {content:msg, sr:data.SR, type:type} );
-});
+    var self = this;
+    
+    ss.stalk.openChannel( users, channelId, function( err, channel ){
+
+      self.channel = channel;
+
+      channel.loadMessages( function(err, messages ){
+        self.messages = messages;
+        self.scrollToBottom(messages.length * 20);
+      });
+
+      channel.onMessage( function(data){
+
+        self.messages.push( data );
+        self.scrollToBottom(100);
+      });
+    });
+  }
 ```
+
+`openChannel` 함수의 인자로 users를, channelId와 넘기면, 채널에 연결할 수 있습니다. users는 채널에 포함된 사용자의 array이고 필수값입니다. channelId는 이미 알고 있는 channelId 정보가 있는 경우에 사용하며, optional 입니다. 채널 연결에 성공하면 callback으로 channel 객체를 받아오게 되고, 이를 사용해서 아래와 같은 기능을 사용할 수 있습니다.
+
+- `loadMessages` : 현재 채널의 메세지를 조회
+- `onMessage` : 현재 채널에서 메세지를 받았을 때의 이벤트 처리
+- `sendText` : 텍스트 메시지 전송
 
 이제 send 함수를 아래와 같이 수정하겠습니다.
 
-```js
-	var msg = encodeURIComponent( this.inputMessage );
-	var data = { 'MG' : msg };
-	this.ss.xpush.send(this.channelId, 'message', data );
-	this.inputMessage = '';
+```javascript
+  public send = () => {
+    var msg = this.inputMessage;
+
+    this.channel.sendText( msg );
+    this.inputMessage = '';
+  }
 ```
 
-이제 XPush를 통해 간단한 text를 주고 받는 모습을 확인하실 수 있습니다.
+이제 S5Platform을 통해 간단한 텍스를 주고 받는 모습을 확인하실 수 있습니다.
