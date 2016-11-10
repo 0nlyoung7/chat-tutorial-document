@@ -15,6 +15,14 @@
 </ion-header>
 
 <ion-content padding>
+  <div padding>
+    <button ion-button color="primary" block (click)="signIn()">Sign In</button>
+    <ion-col center text-center>
+      <span color="primary" style="cursor:pointer;" [navPush]="pushPage">Sign up here!
+        <ion-icon color="primary" name="md-arrow-forward"></ion-icon>
+      </span>
+    </ion-col>
+  </div>
 </ion-content>
 ``` 
 

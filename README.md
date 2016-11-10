@@ -36,4 +36,6 @@ Ionic을 활용하기 위해서는 디음과 같은 3가지 사전지식이 필�
  * 채널관리 : 채널조회, 채널삭제, 사용자초대
  * 메세지관리 : 메세지조회, 메시지 전송, 이미지 전송
 
-이번 튜토리얼에서는 STALK-IM의 API와 Ioni v2를 활용하여 간단한 메신저를 구현해보겠습니다.
+이번 튜토리얼에서는 STALK-IM의 API와 Ioni v2를 활용하여 아래와 같은 형태의 메신저를 구현해보겠습니다.
+
+<a href="images/SiteMap.png" target="_blank"><img src="images/SiteMap.png"/></a>

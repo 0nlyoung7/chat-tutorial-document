@@ -25,4 +25,22 @@ $sudo npm install -g cordova ionic
 ```
 > ionic을 command line 명령어로 사용하기 위해서는 root 권한이 필요합니다.
 
-이렇게 하면 ionic 개발을 위한 모든 준비가 완료된 상태입니다.
+## 프로젝트 다운로드
+-----------
+
+위 단계에서 설치한 ionic을 이용하면 [Tab Template](https://github.com/driftyco/ionic2-starter-tabs)을 활용한 프로젝트를 생성할 수 있습니다.
+
+이번 튜토리얼 세션에서는 [ionic2의 Tab Template](https://github.com/driftyco/ionic2-starter-tabs)을 활용하여 미리 생성한 프로젝트를 이용하여 실습을 진행하겠습니다.
+
+git을 이용하여 프로젝트를 다운로드 받겠습니다.
+
+```bash	
+$ git clone https://github.com/0nlyoung7/chat-tutorial
+```
+
+생성된 chat-tutorial 프로젝트 폴더로 이동하여 `npm install` 명령어를 통해 모듈 설치를 진행하겠습니다.
+
+```bash
+$ cd chat-tutorial
+$ npm install
+```

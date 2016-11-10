@@ -1,23 +1,6 @@
 # 프로젝트 시작하기
 
-[Prepare](prepare.md) 단계에서 설치한 ionic을 이용하여 [Tab Template](https://github.com/driftyco/ionic2-starter-tabs)을 활용한 프로젝트를 생성할 수 있습니다.
-
-이번 튜토리얼 세션에서는 [ionic2의 Tab Template](https://github.com/driftyco/ionic2-starter-tabs)을 활용하여 미리 생성한 프로젝트를 이용하여 실습을 진행하겠습니다.
-
-
-## 프로젝트 다운로드
------------
-
-```bash	
-$ git clone https://github.com/0nlyoung7/chat-tutorial
-```
-
-생성된 chat-tutorial 프로젝트 폴더로 이동하여 `npm install` 명령어를 통해 모듈 설치를 진행하겠습니다.
-
-```bash
-$ cd chat-tutorial
-$ npm install
-```
+본 프로젝트는 [STALK-IM Javascript SDK](https://github.com/S5Platform/STALK-IM-SDK-JS) 사용하고 있습니다. 해당 SDK는 [STALK-IM]의 API를 사용하기 위한 기능들을 함수 형태로 제공하고 있습니다.
 
 ## 프로젝트 구조
 -----------
@@ -39,7 +22,7 @@ ionic을 사용하기 위한 angular, bootstrap 등의 javascript와 css 파일�
 <script src="build/main.js"></script>
 ```
 
-아래와 같이 [S5Platform](https://github.com/S5Platform)을 활용하기 위한 Javascript SDK 또한 포함되어 있습니다.
+아래와 같이 [STALK-IM](https://github.com/S5Platform)을 활용하기 위한 [Javascript SDK](https://github.com/S5Platform/STALK-IM-SDK-JS) 또한 포함되어 있습니다.
 
 ```html
 <script src="https://rawgit.com/S5Platform/Stalk-SDK-JS/master/dist/stalk-im.min.js"></script>
