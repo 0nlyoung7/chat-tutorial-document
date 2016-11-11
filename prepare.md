@@ -11,6 +11,8 @@ Nodejs의 버젼 중에서 최신의 LTS 버젼을 설치하겠습니다.
 
 [Nodejs Downloads](https://nodejs.org/en/download/)
 
+> ionic v2 를 설치하기 위해서는 nodejs 6.0 이상이 필요합니다.
+
 ## Ionic 설치하기
 -----------
 
